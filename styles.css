@@ -1,0 +1,415 @@
+
+
+/* General Styles */
+body {
+  font-family: Helvetica, sans-serif;
+  margin: 0;
+  padding: 20px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+}
+.top-left-text {
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  font-size: 16px;
+  font-weight: normal;
+  color: #333;
+  max-width: 333px; /* Optional: Adjust for better text wrapping */
+}
+
+ .input-runprogram {
+    position: absolute;
+    bottom: 230px;  /* Position it 20px from the bottom */
+    right: 550px;    /* Position it 20px from the left */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align items to the left */
+}
+
+.text-input {
+    font-size: 16px;
+    padding: 10px;
+    width: 170px;
+    border: 1.5px solid;
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.text-input:focus {
+    border-color: #45a049;
+}
+
+.text-input::placeholder {
+    font-style: italic;
+}
+
+
+
+/* Control Panel Grid */
+.control-panel {
+  display: grid;
+  grid-template-columns: repeat(3, 150px);
+  grid-template-rows: repeat(2, 150px);
+  gap: 20px;
+  justify-content: center;
+}
+
+/* Overlay for bright yellow effect */
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 0, 0.5); /* Bright yellow with 50% opacity */
+  z-index: 9999; /* Ensure it's on top of everything */
+  pointer-events: none; /* Allow clicks to pass through */
+  opacity: 0; /* Initially hidden */
+  transition: opacity 0.3s ease; /* Smooth transition for fade-in/out */
+}
+
+/* Refresh Button Styles */
+.refresh-button {
+  position: absolute;
+  bottom: 150px;  /* Position it near the bottom */
+  left: 700px;   /* Position it towards the right side */
+  width: 50px;
+  height: 50px;
+  background-color: #4CAF50;  /* Green button */
+  border-radius: 50%;         /* Circular shape */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s;
+}
+
+.refresh-button:hover {
+  background-color: #45a049;  /* Darker green when hovering */
+}
+
+.refresh-arrow {
+  width: 20px;
+  height: 20px;
+  border: solid 2px white;
+  border-radius: 50%;
+  border-top: none;
+  border-right: none;
+  transform: rotate(-45deg);
+  animation: rotateArrow 3s infinite linear; /* Slower rotation */
+}
+
+@keyframes rotateArrow {
+  0% {
+    transform: rotate(-45deg);
+  }
+  100% {
+    transform: rotate(315deg);
+  }
+}
+
+
+
+/* Buttons */
+.control-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: #007bff;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.control-button:hover {
+  transform: scale(1.1);
+}
+
+/* Slider */
+.slider {
+  width: 100%;
+  height: 20px;
+  cursor: pointer;
+}
+
+/* Knob */
+.knob {
+  width: 80px;
+  height: 80px;
+  background-color: #ff5722;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+}
+
+.knob-line {
+  width: 40px;
+  height: 2px;
+  background-color: lightgray;
+  position: absolute;
+  transform-origin: center;
+  transform: rotate(45deg);
+}
+
+
+
+/* Checkbox and Toggle Switch */
+#shakeCheckbox {
+  margin-top: 20px;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider-round {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+.slider-round:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider-round {
+  background-color: #2196F3;
+}
+
+input:checked + .slider-round:before {
+  transform: translateX(26px);
+}
+
+
+.explode {
+  animation: explosion 0.5s forwards;
+}
+
+/* Explosion effect */
+@keyframes explosion {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+
+
+/* Animation for Shaking */
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-10px); }
+  50% { transform: translateX(10px); }
+  75% { transform: translateX(-10px); }
+  100% { transform: translateX(0); }
+}
+
+.shake {
+  animation: shake 0.5s linear infinite;
+  transform: none; /* Prevent scale change during shake */
+}
+/* Vertical Toggle Switch */
+.vertical-switch {
+  position: relative;
+  display: inline-block;
+  width: 35px;
+  height: 130px;
+  margin-top: 20px;
+}
+
+.vertical-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider-round-v {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 34px;
+  height: 100%;
+}
+
+.slider-round-v:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  border-radius: 50%;
+  left: 4px;
+  top: 4px;
+  background-color: white;
+  transition: 0.4s;
+}
+
+input:checked + .slider-round-v {
+  background-color: #2196F3;
+}
+
+input:checked + .slider-round-v:before {
+  transform: translateY(94px); /* Move the switch indicator down */
+}
+
+/* Explosion effect */
+.explode {
+  animation: explosion 0.5s forwards;
+}
+
+@keyframes explosion {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+
+.control-button, .knob, .slider, .switch, .vertical-switch {
+  transition: transform 0.5s ease, left 0.5s ease, top 0.5s ease;
+}
+
+/* Hide QR code during screen view */
+#qrCode {
+  display: none; /* Hidden on screen */
+}
+
+/* Print-specific styles */
+/* Hide QR code during screen view */
+#qrCode {
+  display: none; /* Hidden on screen */
+}
+
+/* Print-specific styles */
+/* Hide QR code on screen */
+#qrCode {
+  display: none;
+}
+
+/* Print-specific styles */
+/* General styles for print */
+/* General styles for print layout */
+/* General styles for print layout */
+@media print {
+  @page {
+    margin: 10mm; /* Add a standard margin for better spacing */
+  }
+
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    background-color: white; /* Ensure a white background */
+  }
+
+  .control-panel {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping for items */
+    justify-content: center; /* Center items */
+    align-items: center; /* Vertically align items */
+    gap: 10px; /* Add space between items */
+    width: 100%; /* Full width for responsiveness */
+  }
+
+  #joystick {
+  cursor: grab;
+  width: 80px;
+  position: absolute;
+  z-index: 1000;
+}
+
+#joystick:active {
+  cursor: grabbing;
+}
+
+
+  /* Individual control elements */
+  .control-button,
+  .slider,
+  .toggle,
+  .icon {
+    display: inline-block;
+    margin: 0; /* Reset margin */
+    padding: 0; /* Reset padding */
+    text-align: center;
+    vertical-align: middle;
+    box-sizing: border-box; /* Ensure consistent sizing */
+  }
+
+  #qrCode {
+    display: block !important; /* Ensure QR code is visible */
+    position: fixed; /* Keep it at the bottom */
+    bottom: 10mm;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50mm; /* Adjust QR code size */
+    height: auto; /* Maintain aspect ratio */
+  }
+
+  /* Hide unnecessary items */
+  .non-printable {
+    display: none !important;
+  }
+}
+
+

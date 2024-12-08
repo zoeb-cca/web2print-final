@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Grid of Buttons</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <img id="qrCode" src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://your-website-link.com" alt="QR Code to Website" style="display: none;">
+
+
+  <div class="top-left-text">
+    Buttons are the bridges between humans and machines. They guide us, and sometimes, surprise us. This is their story—and yours.
+  </div>
+
+  <div id="overlay"></div>
+ <img src="lightswitch.png" alt="Light Switch" id="lightSwitch" style="cursor: pointer; width: 65px; position: absolute; top: 300px; right: 500px;">
+
+
+<div class="input-runprogram">
+    <label for="runProgramInput"></label>
+    <input type="text" id="runProgramInput" class="text-input" placeholder="RUN PROGRAM">
+</div>
+
+  <div class="control-panel">
+    <img src="joystick.png" alt="Joystick" id="joystick" style="cursor: grab; width: 80px; position: absolute; top: 400px; right: 750px;">
+
+    <img src="print.jpg" alt="Print" id="printButton" style="cursor: pointer; width: 65px; position: absolute; top: 500px; right: 500px;">
+    
+   <button class="refresh-button" id="refreshButton">
+  <div class="refresh-arrow"></div>
+</button>
+    <button class="control-button" id="colorChangeButton"></button>
+    
+    <div class="knob" id="rotationKnob">
+      <div class="knob-line"></div>
+    </div>
+    <input type="range" min="0" max="100" value="50" class="slider" id="sizeSlider">
+    <input type="checkbox" id="shakeCheckbox">          
+    <!-- First toggle switch, moved up vertically -->
+    <label class="switch" style="position: absolute; bottom: 210px; right: 48%;">
+      <input type="checkbox" id="bwToggle">
+      <span class="slider-round"></span>
+    </label>
+    <!-- Second toggle switch, moved up vertically -->
+    <label class="vertical-switch" style="position: absolute; top: 400px; right: 37%;">
+      <input type="checkbox" id="explosionToggle">
+      <span class="slider-round-v"></span>
+    </label>
+    <input type="range" min="0" max="100" value="50" class="vertical-slider" id="bgColorSlider">
+
+  <div class="caption" id="light-caption" style="position: absolute; top: 300px; right: 300px; color: grey; font-size: 14px; text-align: center; font-style: italic; width: 200px;visibility: hidden;">The classic light switch design was patented by William J. Newton in 1906. His design for a simple, vertical toggle switch became the standard and remains largely unchanged in modern homes today. </div>
+
+    <div class="caption" id="joystick-caption" style="position: absolute; top: 400px; right: 700px; color: grey; font-size: 14px; text-align: center; font-style: italic; width: 200px;visibility: hidden;">Joysticks were originally developed for military flight simulators in the 1950s before becoming a popular input device for video games in the 1970s!</div>
+   
+    <div class="caption" id="button-caption" style="position: absolute; top: 280px; left: 410px; color: grey; font-size: 14px; text-align: center; font-style: italic; width: 200px;visibility: hidden;">The original digital button is often credited to the "press button" on early telephones, invented by Almon Strowger in 1891. His design replaced the rotary dial with a button that could be pressed to dial numbers, marking a shift toward more intuitive, digital input methods in communication technology.
+  
+  <div class="caption" id="print-caption" style="position: absolute; top: 210px; left: 820px; color: grey; font-size: 14px; text-align: center; font-style: italic; width: 200px;visibility: hidden;">One of the most famous accidental prints occurred in 1997, when a British government department printed and distributed thousands of confidential documents due to a misclick on the print button. </div>
+  
+  <div class="caption" id="runprogram-caption" style="position: absolute; top: 410px; left: 570px; color: grey; font-size: 14px; text-align: center; font-style: italic; width: 200px;visibility: hidden;">
+Before graphical user interfaces (GUIs), early computer users interacted with machines by typing commands into terminals, controlling everything through text-based instructions.</div>
+
+
+  </div>
+  <audio id="spaceBarSound" src="beep.mp3"></audio>
+  <script src="script.js"></script>
+</body>
+</html>
