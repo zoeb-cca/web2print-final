@@ -9,17 +9,34 @@ const spaceBarSound = document.getElementById("spaceBarSound");
 
 const buttons = document.querySelectorAll(".control-button, .knob, .slider, .vertical-slider, #lightSwitch, #printButton, #refreshButton, #joystick");
 
-// Colors for cycling
-const colors = ["#007bff", "#28a745", "#ff5722", "#ffc107", "#17a2b8"];
+// Extended colors for cycling
+const colors = [
+  "#007bff", "#28a745", "#ff5722", "#ffc107", "#17a2b8", // Original colors
+  "#ff00ff", "#00ffff", "#ff1493", "#ffa500", "#8a2be2", // Additional colors
+  "#f0e68c", "#dc143c", "#00fa9a", "#adff2f", "#6495ed", 
+  "#ff4500", "#2e8b57", "#dda0dd", "#ffdead", "#b22222", 
+  "#7fffd4", "#d2691e", "#48d1cc", "#c71585", "#808000", 
+  "#6a5acd", "#b0c4de", "#ff6347", "#4682b4", "#9acd32"
+];
 let colorIndex = 0;
 
-// Change colors of all buttons
+// Change colors of buttons, sometimes making them different
 colorChangeButton.addEventListener("click", () => {
-  colorIndex = (colorIndex + 1) % colors.length;
   buttons.forEach(button => {
-    button.style.backgroundColor = colors[colorIndex];
+    if (Math.random() > 0.5) { 
+      // 50% chance to assign a random color
+      const randomColor = colors[Math.floor(Math.random() * colors.length)];
+      button.style.backgroundColor = randomColor;
+    } else {
+      // Otherwise, use the cycling index
+      button.style.backgroundColor = colors[colorIndex];
+    }
   });
+  
+  // Increment the cycling color index
+  colorIndex = (colorIndex + 1) % colors.length;
 });
+
 
 // Adjust button size with slider
 sizeSlider.addEventListener("input", (event) => {

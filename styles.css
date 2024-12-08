@@ -331,85 +331,25 @@ input:checked + .slider-round-v:before {
   display: none; /* Hidden on screen */
 }
 
-/* Print-specific styles */
-/* Hide QR code during screen view */
-#qrCode {
-  display: none; /* Hidden on screen */
-}
-
-/* Print-specific styles */
-/* Hide QR code on screen */
-#qrCode {
-  display: none;
-}
 
 /* Print-specific styles */
 /* General styles for print */
 /* General styles for print layout */
 /* General styles for print layout */
+
 @media print {
   @page {
     margin: 10mm; /* Add a standard margin for better spacing */
   }
 
-  body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: 0;
-    padding: 0;
-    background-color: white; /* Ensure a white background */
-  }
-
-  .control-panel {
-    display: flex;
-    flex-wrap: wrap; /* Allow wrapping for items */
-    justify-content: center; /* Center items */
-    align-items: center; /* Vertically align items */
-    gap: 10px; /* Add space between items */
-    width: 100%; /* Full width for responsiveness */
-  }
-
-  #joystick {
-  cursor: grab;
-  width: 80px;
-  position: absolute;
-  z-index: 1000;
-}
-
-#joystick:active {
-  cursor: grabbing;
-}
-
-
-  /* Individual control elements */
-  .control-button,
-  .slider,
-  .toggle,
-  .icon {
-    display: inline-block;
-    margin: 0; /* Reset margin */
-    padding: 0; /* Reset padding */
-    text-align: center;
-    vertical-align: middle;
-    box-sizing: border-box; /* Ensure consistent sizing */
-  }
-
   #qrCode {
     display: block !important; /* Ensure QR code is visible */
     position: fixed; /* Keep it at the bottom */
-    bottom: 10mm;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 50mm; /* Adjust QR code size */
-    height: auto; /* Maintain aspect ratio */
+    bottom: 20mm;
+    left: 20mm;
   }
 
-  /* Hide unnecessary items */
-  .non-printable {
-    display: none !important;
-  }
+ 
 }
 
 
